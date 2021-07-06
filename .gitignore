@@ -1,3 +1,6 @@
 # foldes and env.
-venv/
+env/
 
+# keys and tokens
+tarea4/src/keys.py
+tarea5/src/keys.py
