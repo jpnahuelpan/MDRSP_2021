@@ -39,21 +39,22 @@ obj = 0
 sub = 0
 for tweet in searched_tweets:
     analysis = TextBlob(tweet.text)
-    if analysis.sentiment[1]>0.5:
-       sub = sub + 1
-    elif analysis.sentiment[1]<0.5:
-       obj = obj + 1
-    #else:
-       #neu = neu + 1
+    if analysis.sentiment[1] > 0.5:
+        sub = sub + 1
+    elif analysis.sentiment[1] <= 0.5:
+        obj = obj + 1
+
 print("Total subjetivo = ", sub)
 print("Total objetivo = ", obj)
 
-#Graficando Circular Sentimiento
+# Graficando Circular Sentimiento
 labels = 'obj', 'sub'
 sizes = [obj, sub]
 colors = ['blue', 'red']
 explode = (0.1, 0)  # explode 1st slice
-plt.pie(sizes, explode=explode, labels=labels, colors=colors, autopct='%1.1f%%', shadow=True, startangle=140)
+plt.pie(sizes, explode=explode,
+        labels=labels, colors=colors,
+        autopct='%1.1f%%', shadow=True, startangle=140)
 plt.axis('equal')
 plt.show()
 
@@ -128,7 +129,10 @@ for i in range(0, max_tweets):
 
 # Word Cloud o Nube de Palabras
 all_words = ' '.join([text for text in corpus])
-wc = WordCloud().generate(all_words)
+wc = WordCloud(width=800,
+               height=500,
+               random_state=21,
+               max_font_size=110).generate(all_words)
 plt.figure(figsize=(10, 7))
 plt.imshow(wc, interpolation="bilinear")
 plt.axis('off')
