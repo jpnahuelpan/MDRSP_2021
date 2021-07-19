@@ -1,6 +1,10 @@
 # foldes and env.
 env/
+prueba2/.mypy_cache
+prueba2/__pycache__
+.mypy_cache
 
 # keys and tokens
 tarea4/src/keys.py
 tarea5/src/keys.py
+prueba2/keys.py
